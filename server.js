@@ -135,6 +135,8 @@ client.on("message", message => {
             var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).name);
             var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).id);
             var avatar = JSON.stringify(JSON.parse(JSON.stringify(deta.data)).data[0].imageUrl);
+            avatar = avatar.replace('"',"");
+            avatar = avatar.replace('"',"");
             console.log(id,username,avatar)
             let embed = new Discord.MessageEmbed()
             .setTitle("Link to "+username)
@@ -154,6 +156,8 @@ if(args[0]=="getlinkusername"){
             var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Username);
             var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Id);
             var avatar = JSON.stringify(JSON.parse(JSON.stringify(deta.data)).data[0].imageUrl);
+            avatar = avatar.replace('"',"");
+            avatar = avatar.replace('"',"");
             console.log(id,username,avatar)
             let embed = new Discord.MessageEmbed()
                     .setTitle("Link to "+username)
