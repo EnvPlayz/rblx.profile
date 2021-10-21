@@ -1,11 +1,12 @@
 let Discord = require("discord.js");
 let axios = require("axios");
+require("dotenv").config();
 let client = new Discord.Client();
 
-const prefix = "!rbx";
+const prefix = process.env.PREFIX;
 
 client.once("ready",() => {
-    console.log("ready!");
+    console.log("rblx.profile is online!");
     client.user.setStatus("Use !rbx help")
     client.user.setActivity("Use !rbx help", {type: 'LISTENING'});
 });
@@ -138,4 +139,4 @@ client.on("message", message => {
     }
 });
 
-client.login("OTAwMzY0Njg2NzU3ODg4MDIx.YXAP9Q.7DHbzd872IlXlp_iSlgfWFyNnY4");
+client.login(process.env.DISCORD_TOKEN);
