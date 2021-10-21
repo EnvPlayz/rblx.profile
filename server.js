@@ -82,6 +82,7 @@ client.on("message", message => {
             Get a list of users from a keyword: ${prefix} search [keyword]
             Get help: ${prefix} help
             Get the link to a users profile using ids: ${prefix} getlinkid [id]
+            Get the link to a users profile using username: ${prefix} getlinkusername [username]
             `)
             .setColor("RANDOM")
             message.channel.send(embed);
@@ -130,9 +131,10 @@ client.on("message", message => {
     }//
     if(args[0]=="getlinkid"){
         axios.get(`https://users.roblox.com/v1/users/${args[1]}`).then(function (data) {
-            axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${searchid1}`).then(function (deta) {
+            axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${args[1]}`).then(function (deta) {
             var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).name);
             var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).id);
+            var avatar = JSON.stringify(JSON.parse(JSON.stringify(data.data)).data[0].imageUrl);
             let embed = new Discord.MessageEmbed()
                     .setTitle("Link to "+username)
                     .setImage(avatar)
@@ -147,9 +149,10 @@ client.on("message", message => {
     }//
     if(args[0]=="getlinkusername"){
         axios.get(`https://api.roblox.com/users/get-by-username?username=${args[1]}`).then(function (data) {
-            axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${searchid1}`).then(function (deta) {
+            axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${args[1]}`).then(function (deta) {
             var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Username);
             var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Id);
+            var avatar = JSON.stringify(JSON.parse(JSON.stringify(data.data)).data[0].imageUrl);
             let embed = new Discord.MessageEmbed()
                     .setTitle("Link to "+username)
                     .setImage(avatar)
