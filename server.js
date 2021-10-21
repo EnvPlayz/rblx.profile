@@ -134,7 +134,7 @@ client.on("message", message => {
             axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${args[1]}`).then(function (deta) {
             var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).name);
             var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).id);
-            var avatar = JSON.stringify(JSON.parse(JSON.stringify(data.data)).data[0].imageUrl);
+            var avatar = JSON.stringify(JSON.parse(JSON.stringify(deta.data)).data[0].imageUrl);
             console.log(id,username,avatar)
             let embed = new Discord.MessageEmbed()
             .setTitle("Link to "+username)
@@ -153,7 +153,7 @@ if(args[0]=="getlinkusername"){
         axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${args[1]}`).then(function (deta) {
             var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Username);
             var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Id);
-            var avatar = JSON.stringify(JSON.parse(JSON.stringify(data.data)).data[0].imageUrl);
+            var avatar = JSON.stringify(JSON.parse(JSON.stringify(deta.data)).data[0].imageUrl);
             console.log(id,username,avatar)
             let embed = new Discord.MessageEmbed()
                     .setTitle("Link to "+username)
