@@ -7,8 +7,8 @@ const prefix = process.env.PREFIX;
 
 client.once("ready",() => {
     console.log("rblx.profile is online!");
-    client.user.setStatus("Use !r help")
-    client.user.setActivity("Use !r help", {type: 'LISTENING'});
+    client.user.setStatus("Use"+prefix+" help")
+    client.user.setActivity(prefix+" help. for help", {type: 'LISTENING'});
 });
 
 client.on("message", message => {
@@ -76,11 +76,11 @@ client.on("message", message => {
         if(args[0]=== "help"){
             let embed = new Discord.MessageEmbed()
             .setTitle("Commands for RobloxProfile Bot")
-            .setDescription(`Prefix: !rbx,
-            Get Profile: !rbx prof/profile [username],
-            Get Profile using ids: !rbx id [user id],
-            Get A List of users from a keyword: !rbx search [keyword]
-            Get help: !rbx help
+            .setDescription(`Prefix: ${prefix},
+            Get Profile: ${prefix} prof/profile [username],
+            Get Profile using ids: ${prefix} id [user id],
+            Get A List of users from a keyword: ${prefix} search [keyword]
+            Get help: ${prefix} help
             `)
             .setColor("RANDOM")
             message.channel.send(embed);
