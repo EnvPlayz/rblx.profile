@@ -152,9 +152,9 @@ client.on("message", message => {
 }//
 if(args[0]=="getlinkusername"){
     axios.get(`https://api.roblox.com/users/get-by-username?username=${args[1]}`).then(function (data) {
-        axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${args[1]}`).then(function (deta) {
-            var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Username);
-            var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Id);
+        var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Username);
+        var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Id);
+        axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${id}`).then(function (deta) {
             var avatar = JSON.stringify(JSON.parse(JSON.stringify(deta.data)).data[0].imageUrl);
             avatar = avatar.replace('"',"");
             avatar = avatar.replace('"',"");
