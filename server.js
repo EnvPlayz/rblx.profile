@@ -57,7 +57,7 @@ client.on("message", message => {
                 .setFooter(username)
                 .setColor("GREEN")
                 message.channel.send(embed);
-                if(data.data.includes("The user id is invalid.")){
+                if(JSON.parse(JSON.stringify(data.data)).includes("invaild id")){
                     let embedtxt = new Discord.MessageEmbed()
                     .setTitle("Error! "+err)
                     .setDescription(`BRUH. i searched the whole databse and found nothing.`)
@@ -77,10 +77,11 @@ client.on("message", message => {
             let embed = new Discord.MessageEmbed()
             .setTitle("Commands for RobloxProfile Bot")
             .setDescription(`Prefix: ${prefix},
-            Get Profile: ${prefix} prof/profile [username],
-            Get Profile using ids: ${prefix} id [user id],
-            Get A List of users from a keyword: ${prefix} search [keyword]
+            Get profile using usernames: ${prefix} prof/profile [username],
+            Get profile using ids: ${prefix} id [user id],
+            Get a list of users from a keyword: ${prefix} search [keyword]
             Get help: ${prefix} help
+            Get the link to a users profile using ids: ${prefix} getlinkid [id]
             `)
             .setColor("RANDOM")
             message.channel.send(embed);
@@ -126,17 +127,42 @@ client.on("message", message => {
                 });
             }
         });
-            // let embed = new Discord.MessageEmbed()
-            // .setTitle("Commands for RobloxProfile Bot")
-            // .setDescription(`Prefix: !rbx,
-            // Get Profile: !rbx prof/profile [username],
-            // Get Profile using ids: !rbx id [user id],
-            // Get help: !rbx help
-            // `)
-            // .setColor("RANDOM")
-            // message.channel.send(embed);
-        }
-    }
-});
+    }//
+    if(args[0]=="getlinkid"){
+        axios.get(`https://users.roblox.com/v1/users/${args[1]}`).then(function (data) {
+            axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${searchid1}`).then(function (deta) {
+            var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).name);
+            var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).id);
+            let embed = new Discord.MessageEmbed()
+                    .setTitle("Link to "+username)
+                    .setImage(avatar)
+                    .setDescription(`
+                    Link: https://www.roblox.com/users/${id}/profile
+                    `)
+                    .setFooter("All data feteched directly from the RobloxAPI")
+                    .setColor("GREEN")
+                    message.channel.send(embed);
+            });
+        });
+    }//
+    if(args[0]=="getlinkusername"){
+        axios.get(`https://api.roblox.com/users/get-by-username?username=${args[1]}`).then(function (data) {
+            axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${searchid1}`).then(function (deta) {
+            var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Username);
+            var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Id);
+            let embed = new Discord.MessageEmbed()
+                    .setTitle("Link to "+username)
+                    .setImage(avatar)
+                    .setDescription(`
+                    Link: https://www.roblox.com/users/${id}/profile
+                    `)
+                    .setFooter("All data feteched directly from the RobloxAPI")
+                    .setColor("GREEN")
+                    message.channel.send(embed);
+            });
+        });
+    }//
+}   ///////////////////////////////Prefix found end
+}); /////////////////////////Message Handler End
 
 client.login(process.env.DISCORD_TOKEN);
