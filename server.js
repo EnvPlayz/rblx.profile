@@ -179,7 +179,8 @@ if(args[0]=="getlinkusername"){
        .setColor("RED")
        .setTitle(asset.Name)
        .setDescription(`By: ${asset.Creator.Name} Created at: ${asset.Created} Last updated on: ${asset.Updated} Description: ${asset.Description}`)
-       .setFooter("The following asset was fetched by the noblox.js")
+       .setFooter("The following asset was fetched by the noblox.js");
+       message.channel.send(embed)
     }// 
 }   ///////////////////////////////Prefix found end
 }); /////////////////////////Message Handler End
