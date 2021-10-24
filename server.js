@@ -173,8 +173,8 @@ if(args[0]=="getlinkusername"){
         });
     }//
     if(args[0]=="getasset"){
-        await rbx.getProductInfo(args[1]).then(() => {
-            var asset=await rbx.getProductInfo(args[1]);
+        await rbx.getProductInfo(args[1]).then((assets) => {
+            var asset= assets;
             console.log(asset);
             var embed = new Discord.MessageEmbed()
             .setColor("GREEN")
