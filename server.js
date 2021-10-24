@@ -186,7 +186,7 @@ if(args[0]=="getlinkusername"){
             var embed = new Discord.MessageEmbed()
             .setColor("RED")
             .setTitle("Failed to fetch!")
-            .setDescription(`Unable to fetch asset,double check your id! Error: ${err}`)
+            .setDescription(`Unable to fetch asset,double check your id! Error: ${err.errors[0].message}`)
             .setFooter("The error was fetched from the noblox.js api!");
             message.channel.send(embed)
         });
