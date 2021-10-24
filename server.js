@@ -1,6 +1,6 @@
 let Discord = require("discord.js");
 let axios = require("axios");
-let noblox = require("noblox.js");
+const rbx = require('noblox.js')
 require("dotenv").config();
 let client = new Discord.Client();
 
@@ -173,7 +173,8 @@ if(args[0]=="getlinkusername"){
         });
     }//
     if(args[0]=="addfriend"){
-        console.log(await noblox.getUsernameFromId(1));
+       var username=await rbx.getUsernameFromId(1);
+       console.log(username);
     }// 
 }   ///////////////////////////////Prefix found end
 }); /////////////////////////Message Handler End
