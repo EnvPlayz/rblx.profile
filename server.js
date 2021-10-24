@@ -179,7 +179,12 @@ if(args[0]=="getlinkusername"){
             var embed = new Discord.MessageEmbed()
             .setColor("GREEN")
             .setTitle(asset.Name)
-            .setDescription(`By: ${asset.Creator.Name} Created at: ${asset.Created} Last updated on: ${asset.Updated} Description: ${asset.Description}`)
+            .setDescription(`
+            By: ${asset.Creator.Name} 
+            Created at: ${asset.Created} 
+            Last updated on: ${asset.Updated} 
+            Description: ${asset.Description}
+            Link: https://roblox.com/catalog/${asset.AssetId}/${asset.Name}`)
             .setFooter("The following asset was fetched by the noblox.js");
             message.channel.send(embed)
         }).catch((err) => {
