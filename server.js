@@ -173,14 +173,23 @@ if(args[0]=="getlinkusername"){
         });
     }//
     if(args[0]=="getasset"){
-       var asset=await rbx.getProductInfo(args[1]);
-       console.log(asset);
-       var embed = new Discord.MessageEmbed()
-       .setColor("RED")
-       .setTitle(asset.Name)
-       .setDescription(`By: ${asset.Creator.Name} Created at: ${asset.Created} Last updated on: ${asset.Updated} Description: ${asset.Description}`)
-       .setFooter("The following asset was fetched by the noblox.js");
-       message.channel.send(embed)
+        await rbx.getProductInfo(args[1]).then(() => {
+            var asset=await rbx.getProductInfo(args[1]);
+            console.log(asset);
+            var embed = new Discord.MessageEmbed()
+            .setColor("GREEN")
+            .setTitle(asset.Name)
+            .setDescription(`By: ${asset.Creator.Name} Created at: ${asset.Created} Last updated on: ${asset.Updated} Description: ${asset.Description}`)
+            .setFooter("The following asset was fetched by the noblox.js");
+            message.channel.send(embed)
+        }).catch((err) => {
+            var embed = new Discord.MessageEmbed()
+            .setColor("RED")
+            .setTitle("Failed to fetch!")
+            .setDescription(`Unable to fetch asset,double check your id! Error: ${err}`)
+            .setFooter("The error was fetched from the noblox.js api!");
+            message.channel.send(embed)
+        });
     }// 
 }   ///////////////////////////////Prefix found end
 }); /////////////////////////Message Handler End
