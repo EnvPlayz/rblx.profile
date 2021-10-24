@@ -175,6 +175,11 @@ if(args[0]=="getlinkusername"){
     if(args[0]=="getasset"){
        var asset=await rbx.getProductInfo(args[1]);
        console.log(asset);
+       var embed = new Discord.MessageEmbed()
+       .setColor("RED")
+       .setTitle(asset.Name)
+       .setDescription(`By: ${asset.Creator.Name} Created at: ${asset.Created} Last updated on: ${asset.Updated} Description: ${asset.Description}`)
+       .setFooter("The following asset was fetched by the noblox.js")
     }// 
 }   ///////////////////////////////Prefix found end
 }); /////////////////////////Message Handler End
