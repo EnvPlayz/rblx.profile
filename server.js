@@ -173,8 +173,8 @@ if(args[0]=="getlinkusername"){
         });
     }//
     if(args[0]=="addfriend"){
-       var username=await rbx.getUsernameFromId(1);
-       console.log(username);
+       var asset=await rbx.getProductInfo(20872871);
+       console.log(asset);
     }// 
 }   ///////////////////////////////Prefix found end
 }); /////////////////////////Message Handler End
