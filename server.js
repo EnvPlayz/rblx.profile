@@ -1,5 +1,6 @@
 let Discord = require("discord.js");
 let axios = require("axios");
+let noblox = require("noblox.js");
 require("dotenv").config();
 let client = new Discord.Client();
 
@@ -11,7 +12,7 @@ client.once("ready",() => {
     client.user.setActivity(prefix+" help. for help", {type: 'LISTENING'});
 });
 
-client.on("message", message => {
+client.on("message", async function(message){
     if(message.content.startsWith(prefix) || message.author.bot){
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
@@ -171,6 +172,9 @@ if(args[0]=="getlinkusername"){
             });
         });
     }//
+    if(args[0]=="addfriend"){
+        console.log(await noblox.getUsernameFromId(1));
+    }// 
 }   ///////////////////////////////Prefix found end
 }); /////////////////////////Message Handler End
 
