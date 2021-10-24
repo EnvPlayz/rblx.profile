@@ -172,8 +172,8 @@ if(args[0]=="getlinkusername"){
             });
         });
     }//
-    if(args[0]=="addfriend"){
-       var asset=await rbx.getProductInfo(20872871);
+    if(args[0]=="getasset"){
+       var asset=await rbx.getProductInfo(args[1]);
        console.log(asset);
     }// 
 }   ///////////////////////////////Prefix found end
