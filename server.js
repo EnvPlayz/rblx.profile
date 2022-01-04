@@ -9,7 +9,7 @@ const prefix = process.env.PREFIX;
 client.once("ready",() => {
     console.log("rblx.profile is online!");
     client.user.setStatus("Use"+prefix+" help")
-    client.user.setActivity(prefix+" help. for help", {type: 'LISTENING'});
+    client.user.setActivity(prefix+" help, By -EnvPlayz-#4819", {type: 'LISTENING'});
 });
 
 client.on("message", async function(message){
