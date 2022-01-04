@@ -41,23 +41,6 @@ client.on("message", async function(message){
                 .setColor("RED")
                 message.channel.send(embed)
         })
-            if(args[0]=== "quzzi"){
-            axios.get(`https://api.roblox.com/users/get-by-username?username=Mine11sdt`).then(function (data) {
-                var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Id);
-                var username = JSON.stringify(JSON.parse(JSON.stringify(data.data)).Username);
-                axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=true&size=48x48&userIds=${id}`).then(function (deta) {
-                var avatar = JSON.stringify(JSON.parse(JSON.stringify(deta.data)).data[0].imageUrl);
-                avatar = avatar.replace('"',"");
-                avatar = avatar.replace('"',"");
-                let embed = new Discord.MessageEmbed()
-                .setTitle("Hey!")
-                .setImage(avatar)
-                .setDescription(`Jxquzzi is cool`)
-                .setFooter(username)
-                .setColor("GREEN")
-                message.channel.send(embed)
-            })
-        }
         if(args[0]=== "id"){
             axios.get(`https://users.roblox.com/v1/users/${args[1]}`).then(function (data) {
                 var id = JSON.stringify(JSON.parse(JSON.stringify(data.data)).id);
