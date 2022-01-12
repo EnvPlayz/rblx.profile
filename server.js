@@ -196,6 +196,6 @@ if(args[0]=="getlinkusername"){
         });
     }// 
 }   ///////////////////////////////Prefix found end
-}); /////////////////////////Message Handler End
+}; /////////////////////////Message Handler End
 
 client.login(process.env.DISCORD_TOKEN);
